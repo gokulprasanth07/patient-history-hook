@@ -10,10 +10,6 @@ import { URLS } from "./PatientHistory/constants";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-function valuetext(value) {
-  return `${value}°C`;
-}
-
 
 function App() {
   const [data, setPatientData, isLoading] = usePatientHistory(null);
@@ -83,7 +79,6 @@ function App() {
           value={value}
           onChange={handleChange}
           valueLabelDisplay="on"
-          getAriaValueText={valuetext}
           aria-label="Always visible"
           defaultValue={60}
           step={10}

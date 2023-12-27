@@ -6,13 +6,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Avatar from '@mui/material/Avatar';
+import {stringAvatar} from './Utils';
 
 const dates = [
     "1953-04-12",
     "1958-04-12",
     "1963-04-12",
     "1968-04-12",
-    "1973-04-12",
+    "1973-04-12",   
     "1978-04-12",
     "1983-04-12",
     "1988-04-12",
@@ -70,7 +72,6 @@ export default function BasicTable({ data, isLoading, sliderValue }) {
 
     React.useEffect(() => {
         setRowData(patientList);
-        // console.log(">>> row data >", rowData);
     }, [patientList]);
 
     React.useEffect(() => {
@@ -81,20 +82,22 @@ export default function BasicTable({ data, isLoading, sliderValue }) {
     }, [sliderValue]);
 
 
+
+
     if (!rowData?.length) {
         return null;
     }
 
     return (
         <TableContainer component={Paper} sx={{paddingLeft: '10%'}}>
-            <Table sx={{ width: '80%', border: 1 }} stickyHeader aria-label="sticky table">
+            <Table sx={{ width: '80%',boxShadow: 3,  border: 1 }} stickyHeader aria-label="sticky table">
                 <TableHead >
-                    <TableRow sx={{color: 'gray'}}>
-                        <TableCell align="right"><h3>Id</h3></TableCell>
-                        <TableCell align="right"><h3>Name</h3></TableCell>
-                        <TableCell align="right"><h3>Gender</h3></TableCell>
-                        <TableCell align="right"><h3>Age</h3></TableCell>
-                        <TableCell align="right"><h3>Phone</h3></TableCell>
+                    <TableRow sx={{ bgcolor: 'primary.main'}}>
+                        <TableCell align="center"><h3>Id</h3></TableCell>
+                        <TableCell align="center"><h3>Name</h3></TableCell>
+                        <TableCell align="center"><h3>Gender</h3></TableCell>
+                        <TableCell align="center"><h3>Age</h3></TableCell>
+                        <TableCell align="center"><h3>Phone</h3></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -104,12 +107,14 @@ export default function BasicTable({ data, isLoading, sliderValue }) {
                             sx={{ border: 2 }}
                             key={row?.id}
                         >
-
-                            <TableCell align="right">{row.id}</TableCell>
-                            <TableCell align="right">{row.name}</TableCell>
-                            <TableCell align="right">{row.gender}</TableCell>
-                            <TableCell align="right">{row.age}</TableCell>
-                            <TableCell align="right">{row.phone}</TableCell>
+                            <TableCell align="center">{row.id}</TableCell>
+                            <TableCell align="center">
+                                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12}}><div><Avatar {...stringAvatar(row.name)} /></div>
+                                <div>{row.name}</div></div>
+                            </TableCell>
+                            <TableCell align="center">{row.gender}</TableCell>
+                            <TableCell align="center">{row.age}</TableCell>
+                            <TableCell align="center">{row.phone}</TableCell>
 
                         </TableRow>
                     ))}
