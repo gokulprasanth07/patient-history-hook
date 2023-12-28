@@ -82,8 +82,6 @@ export default function BasicTable({ data, isLoading, sliderValue }) {
     }, [sliderValue]);
 
 
-
-
     if (!rowData?.length) {
         return null;
     }
@@ -92,12 +90,12 @@ export default function BasicTable({ data, isLoading, sliderValue }) {
         <TableContainer component={Paper} sx={{paddingLeft: '10%'}}>
             <Table sx={{ width: '80%',boxShadow: 3,  border: 1 }} stickyHeader aria-label="sticky table">
                 <TableHead >
-                    <TableRow sx={{ bgcolor: 'primary.main'}}>
-                        <TableCell align="center"><h3>Id</h3></TableCell>
-                        <TableCell align="center"><h3>Name</h3></TableCell>
-                        <TableCell align="center"><h3>Gender</h3></TableCell>
-                        <TableCell align="center"><h3>Age</h3></TableCell>
-                        <TableCell align="center"><h3>Phone</h3></TableCell>
+                    <TableRow >
+                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Id</h3></TableCell>
+                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Name</h3></TableCell>
+                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Gender</h3></TableCell>
+                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Age</h3></TableCell>
+                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Phone</h3></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

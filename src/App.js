@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-
 import usePatientHistory from "./PatientHistory/PatientHistoryHook";
 import BasicTable from "./PatientHistory/PatientDataTable";
-import { URLS } from "./PatientHistory/constants";
-
-
 
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -74,8 +70,9 @@ function App() {
       <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row', paddingBottom: '56px'}}>
       <div><h3>FILTER BY AGE</h3></div>
       <Box sx={{ width: 600, align: 'center', paddingLeft: '24px' }}>
-        &nbsp;<Slider
-          getAriaLabel={() => 'Temperature range'}
+        &nbsp;
+        <Slider
+          getAriaLabel={() => 'Age Range'}
           value={value}
           onChange={handleChange}
           valueLabelDisplay="on"
