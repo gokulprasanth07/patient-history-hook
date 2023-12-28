@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import usePatientHistory from "./PatientHistory/PatientHistoryHook";
+import usePatientHistory from "./PatientHistory/usePatientHistory";
 import BasicTable from "./PatientHistory/PatientDataTable";
 
 import Box from '@mui/material/Box';

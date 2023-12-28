@@ -7,14 +7,16 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
-import {stringAvatar} from './Utils';
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
+import { stringAvatar } from './Utils';
 
 const dates = [
     "1953-04-12",
     "1958-04-12",
     "1963-04-12",
     "1968-04-12",
-    "1973-04-12",   
+    "1973-04-12",
     "1978-04-12",
     "1983-04-12",
     "1988-04-12",
@@ -82,42 +84,47 @@ export default function BasicTable({ data, isLoading, sliderValue }) {
     }, [sliderValue]);
 
 
-    if (!rowData?.length) {
-        return null;
-    }
+    // if (!rowData?.length) {
+    //     return null;
+    // }
 
     return (
-        <TableContainer component={Paper} sx={{paddingLeft: '10%'}}>
-            <Table sx={{ width: '80%',boxShadow: 3,  border: 1 }} stickyHeader aria-label="sticky table">
-                <TableHead >
-                    <TableRow >
-                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Id</h3></TableCell>
-                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Name</h3></TableCell>
-                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Gender</h3></TableCell>
-                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Age</h3></TableCell>
-                        <TableCell sx={{ bgcolor: '#1976d2'}} align="center"><h3>Phone</h3></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rowData && rowData?.length && rowData.map((row) => (
-                            <TableRow
-                            key={row.name}
-                            sx={{ border: 2 }}
-                            key={row?.id}
-                        >
-                            <TableCell align="center">{row.id}</TableCell>
-                            <TableCell align="center">
-                                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12}}><div><Avatar {...stringAvatar(row.name)} /></div>
-                                <div>{row.name}</div></div>
-                            </TableCell>
-                            <TableCell align="center">{row.gender}</TableCell>
-                            <TableCell align="center">{row.age}</TableCell>
-                            <TableCell align="center">{row.phone}</TableCell>
-
+        isLoading ? (
+            <Box sx={{ width: '100%' }}>
+                <LinearProgress />
+            </Box>
+        ) : (
+            <TableContainer component={Paper} sx={{ paddingLeft: '10%' }} >
+                <Table sx={{ width: '80%', boxShadow: 3, border: 1 }} stickyHeader aria-label="sticky table">
+                    <TableHead >
+                        <TableRow >
+                            <TableCell sx={{ bgcolor: '#1976d2' }} align="center"><h3>Id</h3></TableCell>
+                            <TableCell sx={{ bgcolor: '#1976d2' }} align="center"><h3>Name</h3></TableCell>
+                            <TableCell sx={{ bgcolor: '#1976d2' }} align="center"><h3>Gender</h3></TableCell>
+                            <TableCell sx={{ bgcolor: '#1976d2' }} align="center"><h3>Age</h3></TableCell>
+                            <TableCell sx={{ bgcolor: '#1976d2' }} align="center"><h3>Phone</h3></TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    );
+                    </TableHead>
+                    <TableBody>
+                        {rowData && rowData?.length && rowData.map((row) => (
+                            <TableRow
+                                key={row.name}
+                                sx={{ border: 2 }}
+                                key={row?.id}
+                            >
+                                <TableCell align="center">{row.id}</TableCell>
+                                <TableCell align="center">
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}><div><Avatar {...stringAvatar(row.name)} /></div>
+                                        <div>{row.name}</div></div>
+                                </TableCell>
+                                <TableCell align="center">{row.gender}</TableCell>
+                                <TableCell align="center">{row.age}</TableCell>
+                                <TableCell align="center">{row.phone}</TableCell>
+
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer >
+        ));
 }
